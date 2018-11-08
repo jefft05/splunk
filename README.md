@@ -13,3 +13,7 @@
   	 | stats sum(b) as b by _time, pool, indexname, sourcetypename
   	 | eval GB=round(b/1024/1024/1024, 3)
  	 | fields _time, indexname, sourcetypename, GB
+ 	 
+ 	 
+ 	 
+ #11/08/2018
