@@ -32,7 +32,7 @@ index=_internal source=*license_usage.log type="Usage" earliest=-2d@d latest=@d
 | stats first(*) as * by host, sourcetype
 ```
 
-#List of forwarders and version
+# List of forwarders and version
 ```  
 index="_internal" source="*metrics.log*" group=tcpin_connections 
 | dedup hostname
