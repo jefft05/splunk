@@ -39,7 +39,22 @@ index="_internal" source="*metrics.log*" group=tcpin_connections
 | table hostname,sourceIp,fwdType,version,build,os,arch
 ```
 
+# List of Source types
+```
+|metasearch index=* sourcetype=* | stats count by index, sourcetype | fields - count
+```
+```
+* | stats count by host source
+```
 
+# License date information
+```
+| REST /services/licenser/licenses/ 
+| eval now=now() 
+| eval expire_in_days=(expiration_time-now)/86400
+| eval expiration_time=strftime(expiration_time, "%Y-%m-%d  %H:%M:%S")
+| table group_id expiration_time expire_in_days
+```
 
 11/9/2018
   
