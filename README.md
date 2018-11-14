@@ -56,7 +56,7 @@ index="_internal" source="*metrics.log*" group=tcpin_connections
 | table group_id expiration_time expire_in_days
 ```
 
-11/9/2018
+11/14/2018
   
 
 
