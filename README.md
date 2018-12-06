@@ -55,8 +55,20 @@ index="_internal" source="*metrics.log*" group=tcpin_connections
 | eval expiration_time=strftime(expiration_time, "%Y-%m-%d  %H:%M:%S")
 | table group_id expiration_time expire_in_days
 ```
+# List of most recent searches by source type
 
-11/14/2018
+```
+index=_audit action=search info=granted search=* NOT "search_id='scheduler" NOT "search='|history" NOT "user=splunk-system-user" NOT "search='typeahead" NOT "search='| metadata type=* | search totalCount>0" 
+ | rex field=search "index=(?P<search_index>[^ ]+)" 
+ | rex field=search "sourcetype=(?P<search_sourcetype>[^ ]+)" 
+ | eval time=strftime(_time, "%m/%d/%y %H:%M:%S") 
+ | rex field=search_index "\"(?P<search_index>\w+)" 
+ | rex field=search_sourcetype "\"(?P<search_sourcetype>\w+)" 
+ | stats max(time) as last_searched by search_index search_sourcetype 
+ | sort -search_index -search_sourcetype
+```
+
+12/06/2018
   
 
 
