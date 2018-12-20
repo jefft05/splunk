@@ -67,8 +67,12 @@ index=_audit action=search info=granted search=* NOT "search_id='scheduler" NOT 
  | stats max(time) as last_searched by search_index search_sourcetype 
  | sort -search_index -search_sourcetype
 ```
+# Splunk Index and search head info
+```
+| rest /services/server/info | table splunk_server version 
+```
 
-12/06/2018
+12/20/2018
   
 
 
